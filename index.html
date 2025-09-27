@@ -4,151 +4,212 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Forward Consult Ltd — Retail & Leisure Recruitment Specialist</title>
+  <meta name="description" content="Forward Consult Ltd helps retail & leisure brands hire store, head-office and operations talent across the UK." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%230f172a%22/><text x=%2250%25%22 y=%2258%25%22 text-anchor=%22middle%22 font-size=%2258%22 font-family=%22Arial%2CHelvetica%2Csans-serif%22 fill=%22white%22>F</text></svg>">
   <style>
-    :root { --ink:#0f172a; --muted:#475569; --line:#e2e8f0; --bg:#ffffff; --pill:#0f172a; }
-    *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;background:#fff;color:var(--ink)}
+    :root{
+      --ink:#0f172a; --muted:#475569; --line:#e2e8f0; --bg:#ffffff; --pill:#0f172a;
+      --hero1:#f8fafc; --hero2:#ffffff;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial,sans-serif}
     a{color:inherit;text-decoration:none}
-    .wrap{max-width:1120px;margin:0 auto;padding:16px}
-    header{position:sticky;top:0;background:rgba(255,255,255,.9);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
-    .row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
-    .brand{display:flex;gap:12px;align-items:center}
+    img{max-width:100%;height:auto;display:block}
+
+    /* Layout helpers */
+    .wrap{max-width:1120px;margin-inline:auto;padding-inline:16px}
+    .stack{display:flex;flex-direction:column;gap:16px}
+    .row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .card{border:1px solid var(--line);border-radius:20px;background:#fff;padding:20px;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+
+    /* Header */
+    header{position:sticky;top:0;background:rgba(255,255,255,.9);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);z-index:10}
+    .brand{display:flex;align-items:center;gap:12px}
     .brand img{height:40px;width:40px;border-radius:12px;border:1px solid var(--line);background:#fff;object-fit:contain}
-    .sub{font-size:12px;color:var(--muted)}
-    nav a{color:#475569;margin-left:18px}
-    .hero{background:linear-gradient(135deg,#f8fafc,#ffffff);border-bottom:1px solid var(--line)}
-    .hero .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;padding:64px 0}
-    .h1{font-weight:800;font-size:42px;line-height:1.15;margin:0}
-    .lead{margin-top:12px;color:var(--muted);font-weight:600}
-    .p{margin-top:18px;color:#334155;font-size:18px;max-width:60ch}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:16px;font-weight:600}
+    .strap{font-size:12px;color:var(--muted)}
+    nav{display:flex;gap:18px}
+    .menu-btn{display:none;appearance:none;border:1px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px}
+
+    /* Mobile nav (checkbox hack, no JS) */
+    #mnav{display:none}
+    #mnav:checked + .mwrap{display:block}
+    .mwrap{display:none;border-top:1px solid var(--line);padding:10px 16px}
+    .mwrap a{display:block;padding:10px 0;color:var(--muted)}
+
+    /* Hero */
+    .hero{background:linear-gradient(135deg,var(--hero1),var(--hero2));border-bottom:1px solid var(--line)}
+    .hero-grid{display:grid;gap:24px;padding-block:56px;grid-template-columns:1fr}
+    .h1{margin:0;font-weight:800;font-size:34px;line-height:1.18}
+    .lead{margin-top:8px;color:var(--muted);font-weight:600}
+    .p{margin-top:14px;color:#334155;font-size:17px}
+    .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:14px;font-weight:600}
     .btn.primary{background:var(--pill);color:#fff}
-    .btn.ghost{border:1px solid var(--line);color:#0f172a}
-    .card{border:1px solid var(--line);border-radius:20px;padding:24px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.04)}
-    h2{font-size:28px;margin:0}
-    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .btn.ghost{border:1px solid var(--line);color:var(--ink);background:#fff}
+
+    /* Sections */
+    section{scroll-margin-top:80px}
+    h2{margin:0;font-size:24px}
     .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .stat{border:1px solid var(--line);border-radius:16px;text-align:center;padding:16px;background:#fff}
-    .k{font-size:26px;font-weight:800}
+    .stat{border:1px solid var(--line);border-radius:14px;text-align:center;padding:14px;background:#fff}
+    .k{font-size:22px;font-weight:800}
     .l{font-size:12px;color:var(--muted)}
-    .list{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .pill{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--line);border-radius:16px;padding:14px 16px;background:#fff}
-    footer{border-top:1px solid var(--line);padding:20px 0;color:#475569;font-size:14px}
+    .grid3{display:grid;grid-template-columns:1fr;gap:12px}
+    .list{display:grid;grid-template-columns:1fr;gap:12px}
+    .pill{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#fff}
+
+    /* Contact strip */
     .contact{background:#0f172a;color:#fff}
     .contact a{color:#fff}
-    .contact .muted{color:#cbd5e1}
-    .contactGrid{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:48px 0}
-    @media (max-width:900px){ .hero .grid, .contactGrid, .grid3, .list{grid-template-columns:1fr} .h1{font-size:34px} }
+    .muted{color:#cbd5e1}
+
+    /* Footer */
+    footer{border-top:1px solid var(--line);padding:18px 0;color:#475569;font-size:14px}
+
+    /* Medium+ screens */
+    @media (min-width: 720px){
+      .h1{font-size:44px}
+      .hero-grid{grid-template-columns:1.2fr .8fr;align-items:center}
+      .grid3{grid-template-columns:repeat(3,1fr)}
+      .list{grid-template-columns:repeat(3,1fr)}
+      .menu-btn{display:none}
+      #mnav, .mwrap{display:none}
+    }
+    /* Small screens */
+    @media (max-width: 719px){
+      nav{display:none}
+      .menu-btn{display:block}
+    }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="wrap row">
-    <div class="brand">
-      <img src="/logo-forward-recruit.png" alt="Forward Recruit logo">
+  <!-- Header -->
+  <header>
+    <div class="wrap row" style="padding-block:12px">
+      <div class="brand">
+        <img src="/logo-forward-recruit.png" alt="Forward Recruit logo">
+        <div>
+          <div style="font-weight:700">Forward Consult Ltd</div>
+          <div class="strap">Retail & Leisure Recruitment Specialist</div>
+        </div>
+      </div>
+
+      <!-- Desktop nav -->
+      <nav aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#functions">Functions</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <!-- Mobile menu button -->
+      <label for="mnav" class="menu-btn">Menu</label>
+    </div>
+
+    <!-- Mobile nav sheet -->
+    <input type="checkbox" id="mnav" hidden>
+    <div class="mwrap wrap">
+      <a href="#about" onclick="document.getElementById('mnav').checked=false">About</a>
+      <a href="#services" onclick="document.getElementById('mnav').checked=false">Services</a>
+      <a href="#functions" onclick="document.getElementById('mnav').checked=false">Functions</a>
+      <a href="#contact" onclick="document.getElementById('mnav').checked=false">Contact</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-grid">
       <div>
-        <div style="font-weight:700">Forward Consult Ltd</div>
-        <div class="sub">Retail & Leisure Recruitment Specialist</div>
+        <h1 class="h1">Retail & Leisure hiring made simple.</h1>
+        <div class="lead">Forward-thinking recruitment for retail & leisure brands.</div>
+        <p class="p">
+          Forward Consult Ltd partners with retail and leisure brands to source, assess, and place exceptional
+          store, head-office, and operations talent across the UK.
+        </p>
+        <div class="btns">
+          <a class="btn primary" href="#contact">Get in touch →</a>
+          <a class="btn ghost" href="#services">Our services</a>
+        </div>
+      </div>
+      <div class="card" style="text-align:center">
+        <div style="font-size:56px">🔎</div>
+        <div style="margin-top:10px;font-weight:700;color:#0f172a">We source, you grow.</div>
+        <div class="strap">Store, Head Office & Operations • Permanent, Contract & Campaigns</div>
       </div>
     </div>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#functions">Functions</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
+  </section>
 
-<section class="hero">
-  <div class="wrap grid">
-    <div>
-      <h1 class="h1">Retail & Leisure hiring made simple.</h1>
-      <div class="lead">Forward-thinking recruitment for retail & leisure brands.</div>
-      <p class="p">Forward Consult Ltd partners with retail and leisure brands to source, assess, and place exceptional store, head-office, and operations talent across the UK.</p>
-      <div style="margin-top:18px;display:flex;gap:10px;">
-        <a class="btn primary" href="#contact">Get in touch →</a>
-        <a class="btn ghost" href="#services">Our services</a>
-      </div>
-    </div>
-    <div class="card" style="text-align:center">
-      <div style="font-size:54px">🔎</div>
-      <div style="margin-top:12px;font-weight:600;color:#0f172a">We source, you grow.</div>
-      <div class="sub">Store, Head Office & Operations • Permanent, Contract & Campaigns</div>
-    </div>
-  </div>
-</section>
-
-<section id="about" class="wrap" style="padding:48px 0">
-  <div class="grid3" style="grid-template-columns:1fr 1fr;">
-    <div>
+  <!-- About -->
+  <section id="about" class="wrap" style="padding-block:40px">
+    <div class="stack" style="gap:20px">
       <h2>About us</h2>
-      <p class="p">We’re a UK-based recruitment specialist focused on retail and leisure. From single placements to multi-store buildouts, we blend market mapping, competency-based screening, and thoughtful candidate care.</p>
-    </div>
-    <div class="stats">
-      <div class="stat"><div class="k">10+</div><div class="l">years combined experience</div></div>
-      <div class="stat"><div class="k">5–7 days</div><div class="l">typical shortlist time</div></div>
-      <div class="stat"><div class="k">95%</div><div class="l">offer acceptance rate</div></div>
-    </div>
-  </div>
-</section>
-
-<section id="services" style="background:#f8fafc;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
-  <div class="wrap" style="padding:48px 0">
-    <h2>Recruitment Services</h2>
-    <div class="grid3" style="margin-top:18px">
-      <div class="card">
-        <div style="font-weight:700">Contingent & Retained Search</div>
-        <div class="sub" style="margin-top:8px">Specialist & leadership roles across Store, Area, Head Office and Operations.</div>
-      </div>
-      <div class="card">
-        <div style="font-weight:700">High-Volume & Campaign Hiring</div>
-        <div class="sub" style="margin-top:8px">Store openings, seasonal peaks, rollouts. SLA-driven delivery & assessment days.</div>
-      </div>
-      <div class="card">
-        <div style="font-weight:700">Talent Advisory</div>
-        <div class="sub" style="margin-top:8px">Employer branding, competency frameworks, and process optimisation.</div>
+      <p class="p" style="margin:0">
+        We’re a UK-based recruitment specialist focused on retail and leisure. From single placements to
+        multi-store buildouts, we blend market mapping, competency-based screening, and thoughtful candidate care
+        designed for customer-facing teams.
+      </p>
+      <div class="stats">
+        <div class="stat"><div class="k">10+</div><div class="l">years combined experience</div></div>
+        <div class="stat"><div class="k">5–7 days</div><div class="l">typical shortlist time</div></div>
+        <div class="stat"><div class="k">95%</div><div class="l">offer acceptance rate</div></div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="functions" class="wrap" style="padding:48px 0">
-  <h2>Functions We Hire</h2>
-  <div class="list" style="margin-top:16px">
-    <div class="pill"><span>Store Leadership & Area Management</span><span>→</span></div>
-    <div class="pill"><span>Retail Operations & Loss Prevention</span><span>→</span></div>
-    <div class="pill"><span>Hospitality & Leisure Operations</span><span>→</span></div>
-    <div class="pill"><span>Visual Merchandising & CX</span><span>→</span></div>
-    <div class="pill"><span>Head Office: Buying, Merch, Marketing</span><span>→</span></div>
-    <div class="pill"><span>People, HR & L&amp;D</span><span>→</span></div>
-  </div>
-</section>
+  <!-- Services -->
+  <section id="services" style="background:#f8fafc;border-block:1px solid var(--line)">
+    <div class="wrap" style="padding-block:40px">
+      <h2>Recruitment Services</h2>
+      <div class="grid3" style="margin-top:16px">
+        <div class="card">
+          <div style="font-weight:700">Contingent & Retained Search</div>
+          <div class="strap" style="margin-top:8px">Specialist & leadership roles across Store, Area, Head Office and Operations.</div>
+        </div>
+        <div class="card">
+          <div style="font-weight:700">High-Volume & Campaign Hiring</div>
+          <div class="strap" style="margin-top:8px">Store openings, seasonal peaks, rollouts. SLA-driven delivery & assessment days.</div>
+        </div>
+        <div class="card">
+          <div style="font-weight:700">Talent Advisory</div>
+          <div class="strap" style="margin-top:8px">Employer branding, competency frameworks, and process optimisation.</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="contact" class="contact">
-  <div class="wrap contactGrid">
-    <div>
+  <!-- Functions -->
+  <section id="functions" class="wrap" style="padding-block:40px">
+    <h2>Functions We Hire</h2>
+    <div class="list" style="margin-top:14px">
+      <div class="pill"><span>Store Leadership & Area Management</span><span>→</span></div>
+      <div class="pill"><span>Retail Operations & Loss Prevention</span><span>→</span></div>
+      <div class="pill"><span>Hospitality & Leisure Operations</span><span>→</span></div>
+      <div class="pill"><span>Visual Merchandising & CX</span><span>→</span></div>
+      <div class="pill"><span>Head Office: Buying, Merch, Marketing</span><span>→</span></div>
+      <div class="pill"><span>People, HR & L&amp;D</span><span>→</span></div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="wrap" style="padding-block:36px">
       <h2>Contact</h2>
-      <p class="muted" style="margin-top:10px">Tell us what you’re hiring for and we’ll respond within one business day.</p>
-      <div style="margin-top:16px;display:grid;gap:8px">
+      <p class="muted" style="margin-top:8px">Tell us what you’re hiring for and we’ll respond within one business day.</p>
+      <div style="margin-top:14px;display:grid;gap:8px">
         <div>📧 <a href="mailto:forwardconsultltd@gmail.com">forwardconsultltd@gmail.com</a></div>
         <div>📍 127 Brettell Lane, Stourbridge, England DY8 4BA</div>
       </div>
     </div>
-    <div class="card" style="background:#0b1220;color:#e2e8f0;border-color:#1e293b">
-      <div style="font-weight:700;color:#fff">Forward Consult Ltd</div>
-      <div class="muted">Retail & Leisure Recruitment Specialist</div>
-      <div class="muted" style="margin-top:8px">Store, Head Office & Operations • Permanent, Contract & Campaigns</div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap">
+      © <span id="y"></span> Forward Consult Ltd. All rights reserved. Registered address: 127 Brettell Lane, Stourbridge, England DY8 4BA.
     </div>
-  </div>
-</section>
+  </footer>
 
-<footer>
-  <div class="wrap">
-    © <span id="y"></span> Forward Consult Ltd. All rights reserved. Registered address: 127 Brettell Lane, Stourbridge, England DY8 4BA.
-  </div>
-</footer>
-
-<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
